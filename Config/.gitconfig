@@ -1,0 +1,5 @@
+[user]
+	email = sbrami@wynd.eu
+	name = sacha brami
+[core]
+	excludesfile = /Users/sachabrami/.gitignore_global
