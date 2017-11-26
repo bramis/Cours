@@ -21,7 +21,7 @@ docker run busybox:1.24 echo 'Hello World'
 
 #### Avalaible options
 
-* _-i_start an interactive container
+* _-i_ start an interactive container
 
 * _-t_ Create a pseudo-tty that attaches stdin and stdout
 
@@ -165,3 +165,99 @@ ADD intruction also has the ability to autoatically unpack compressed files
 #### WORKDIR Instruction
 
 Define the current working directory
+
+### Run a command in a running container 
+
+```
+docker exec -it _container_id_ _cmd_
+```
+
+Example: 
+
+```
+docker exec -it 0c4b048c5336 bash
+```
+### Link container
+
+Add mapping of hostnames and IP adresses linked, to /etc/hosts.
+So hostname of container name linked, will be resolves as the IP address on the left column of the hosts file.
+
+```
+docker run [options] --link _container_name_ docker_image:tag
+```
+
+To verify those informations, execute command:
+
+```
+docker inspect linked_container_id | grep IP
+```
+
+or `ping` hostname linked
+
+#### Benefites of Docker Container Links
+* The main use for docker container links is when we build an application with a microservice architecture, we are able to run many independent components in different containers.
+* Docker creates a secure tunnel between the containers that doesn't need to expose any ports externally on the container
+
+### Docker Compose
+
+Docker compose is a tool for defining and running multiple container docker application, it's a very handy tool to quickly get docker environment up and running
+
+So, with Docker compose we can define all the containers in a single file called `docker-compose.yml` file to store the configuration of all the containers, which removes the burden to maintain our scripts for docker orchestration
+
+Little example of a docker compose file:
+
+```
+version: 3
+services:
+  dockerapp:
+    build: .
+    ports:
+      - "5000:5000" // <host_port>:<container_port>
+    depends_on:
+      - redis
+  redis:
+    image: redis:3.2.0
+```
+
+#### Version
+`version: ` specify version of docker-compose syntax version
+
+We need to put it at the root of `yml` file
+
+#### Services
+`service:` to defined the services, the make up our application. 
+
+For each service we provide instruction about how to built and run a container
+
+Example:
+
+```
+services:
+  dockerapp:
+    build: . // Location of DockerFile to build the container/service
+    ports: // Define port redirecting (like -p option of `docker run` command)
+      - "5000:5000" // <host_port>:<container_port>
+    depends_on: // Dependances of the container/service, docker will first start those dependances before
+      - redis
+  redis:
+    image: redis:3.2.0 // Set image and tag to use
+```
+
+#### Docker Compose Command
+
+* `docker-compose up`: Starts up all the containers.
+* `docker-compose ps`: Checks the status of the containers managed by docker compose.
+* `docker-compose logs`: Outputs colored and aggregated logs for the compose-managed containers.
+* `docker-compose logs -f`: Outputs appended log when the log grows.
+* `docker-compose logs _container_name` :Outputs the logs of a specific container.
+* `docker-compose stop`: Stops all the running containers without removing them.
+* `docker-compose rm`: Removes all the containers.
+* `docker-compose build`: Rebuilds all the images.
+
+
+
+## Redis
+
+* In-memory data structure store, used as database, cache and message broker
+* Build-in replication and different levels of on-disk persistence
+* Widely used in lots of critical products in the field such as Twitter Timeline Service and Facebook News Feed
