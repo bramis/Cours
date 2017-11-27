@@ -115,7 +115,9 @@ docker logs container_id
 
 ### Docker image layes
 
+```
 docker history busybox:1.24
+```
 
 Top image layer is writable layer (create file, etc...)
 
