@@ -1,0 +1,32 @@
+{
+  "name": "nodeschool",
+  "version": "1.0.0",
+  "description": "Make nodeschool exercices",
+  "main": "index.js",
+  "author": "Sacha BRAMI",
+  "license": "MIT",
+  "scripts": {
+    "learnyounode": "learnyounode",
+    "express": "expressworks",
+    "mongo": "learnyoumongo",
+    "electron": "elementary-electron",
+    "JS-iterator": "esnext-generation",
+    "js-best-practices": "js-best-practices",
+    "proto": "planetproto",
+    "async": "async-you",
+    "promise": "promise-it-wont-hurt",
+    "webgl": "introtowebgl"
+  },
+  "dependencies": {
+    "async-you": "^2.0.0",
+    "elementary-electron": "^1.5.2",
+    "esnext-generation": "^2.1.1",
+    "expressworks": "^3.4.2",
+    "introtowebgl": "^1.0.1",
+    "js-best-practices": "^1.1.4",
+    "learnyoumongo": "^3.2.1",
+    "learnyounode": "^3.5.10",
+    "planetproto": "^0.9.0",
+    "promise-it-wont-hurt": "^1.1.3"
+  }
+}
