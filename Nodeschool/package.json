@@ -27,6 +27,7 @@
     "js-best-practices": "^1.1.4",
     "learnyoumongo": "^3.2.1",
     "learnyounode": "^3.5.10",
+    "mongodb": "^3.0.1",
     "planetproto": "^0.9.0",
     "promise-it-wont-hurt": "^1.1.3",
     "stream-adventure-fr": "^2.5.2",
