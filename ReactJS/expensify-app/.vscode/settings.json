@@ -1,0 +1,4 @@
+{
+    "jest.pathToConfig": "./jest.config.json",
+    "jest.rootPath": "src"
+}
